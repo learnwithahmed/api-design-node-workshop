@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import config from './config'
 import cors from 'cors'
 import { connect } from './helpers/db'
+import itemRouter from './resources/item/item.router'
 export const app = express()
 
 app.disable('x-powered-by')
@@ -14,6 +15,7 @@ app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
 // Mount all routers here
+app.use('/v1/api/item', itemRouter)
 
 const start = async () => {
 	try {
